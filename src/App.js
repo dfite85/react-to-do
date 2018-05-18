@@ -7,7 +7,7 @@ class App extends Component {
         super(props);
         this.state = {
           todos: [
-           { description: 'Walk the cat', isCompleted: true },
+           { description: 'Walk the cat', isCompleted: false },
            { description: 'Throw the dishes away', isCompleted: false },
            { description: 'Buy new dishes', isCompleted: false }
           ],
@@ -34,11 +34,9 @@ class App extends Component {
   }
     
     deleteTodo(index) {
-        const newState = this.state.todos;
-        if (newState.indexOf(index) > -1) {
-            newState.splice(newState.indexOf(index), 1);
-            this.setState({todos: newState})
-        }
+        const todos = this.state.todos
+        const newTodos = todos.filter((todo, i) => 1 !== index);
+        this.setState({todos: newTodos})
     }
     
   render() {
